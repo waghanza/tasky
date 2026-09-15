@@ -35,7 +35,6 @@ Sync Impact Report
 + Build scripts, test harnesses, and operational tooling MUST be implemented in python if, and only if, they do not contain production.
 + Pÿthon code MUST formatted, PEP aware and strictly typed.
 
-
 ### 3. HTTP Layer
 
 + Backend HTTP clients and servers MUST use Hyper as their HTTP protocol foundation. 
@@ -43,20 +42,25 @@ Sync Impact Report
 + Introducing a competing HTTP protocol stack requires a constitution amendment. 
 + This standard keeps transport behavior, security review, and operational knowledge focused.
 
-### 4. Mobile development
+### 4. Storage layer
+
++ All data must be store using TackChampion crate
++ All data are store locally, but MAY in the future be store in any other place
+
+### 5. Mobile development
 
 + Mobile application code MUST use Kotlin and the Kotlin Multiplatform architecture.
 + Kotlin should be used for all part of code, except domain logic / application rules that should be written in Rust and exported with Uniffi
 + Database access should remain in Kotlin, since their is no shared logic with backend
 + Android-specific presentation and platform integrations MUST remain in Android source sets.
 
-### 5. Android support
+### 6. Android support
 
 + Android is the only supported mobile platform as for now. The minimum supported operating system MUST be Android 10, corresponding to API level 29. 
 + Features MUST work on API level 29 and every supported later level, and automated verification MUST include API level 29.
 + Plans and tasks MUST NOT add any iOS, desktop, weblient, or pre-Android-10 compatibility work unless this constitution is amended first. A narrow platform target keeps product and security support commitments explicit.
 
-### 6. Maintainability
+### 7. Maintainability
 
 + Development MUST follow Domain-Driven Design principles. 
 + Each feature MUST identify its bounded context, use a documented ubiquitous language, and keep domain rules independent of transport, persistence, and user interface concerns. 
@@ -64,7 +68,7 @@ Sync Impact Report
 + Modules and types MUST have a single, cohesive responsibility, and architecture decisions that cross context boundaries MUST be documented.
 + These rules make ownership, change impact, and maintenance costs visible.
 
-### 7. Testing
+### 8. Testing
 
 + Production behavior MUST be developed with the red-green-refactor TDD cycle: write an executable failing test, implement the minimum behavior needed to pass, then refactor while the suite remains green. 
 + Each user-visible behavior and security-sensitive rule MUST have acceptance scenarios written in natural language using Gherkin Given/When/Then syntax. 
@@ -72,17 +76,13 @@ Sync Impact Report
 + A change is incomplete if its required tests were written only after the production behavior or if its acceptance scenarios are not executable.
 + Any tool should have a mutation testing feature
 
-### 8. Security
+### 9. Security
 
 + Security is the primary design and release criterion. 
 + Every feature MUST document its assets, trust boundaries, threat cases, authentication and authorization rules, data classification, and failure behavior before implementation. 
 + Implementations MUST use secure defaults, least privilege, explicit input validation, protected secret storage, encryption for sensitive data in transit and at rest, and auditable security events. 
 + Reviews MUST block release for unresolved critical or high-severity vulnerabilities, failed security tests, exposed secrets, or unmitigated threats. 
 + Enterprise readiness MUST be demonstrated through traceable controls, repeatable evidence, and documented operational ownership rather than asserted without verification.
-
-### 9. Changes
-
-+ Any change introduce MUST respect this constitution. Other it SHOULD be amended first
 
 ## Technology Constraints
 
