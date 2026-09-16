@@ -15,7 +15,7 @@ Sync Impact Report
 - Removed sections: none
 - Follow-up TODOs: none
 -->
-# Tasky Constitution
+# Rules
 
 ## Core Principles
 
