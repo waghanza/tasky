@@ -1,19 +1,9 @@
 <!--
 Sync Impact Report
-- Version change: unratified template -> 1.0.0
-- Modified principles: none; initial project-specific ratification
-- Added principles:
-  - I. Current Stable Versions
-  - II. Rust Backend
-  - III. Hyper HTTP Foundation
-  - IV. Kotlin Multiplatform Mobile
-  - V. Android 10 and Later
-  - VI. Domain-Driven Design and Maintainability
-  - VII. Behavior-Driven Test-First Development
-  - VIII. Security First
-- Added sections:
-  - Technology Constraints
-  - Development Workflow and Quality Gates
+- Version change: 1.0.0 -> 1.1.0
+- Modified principles:
+  - 9. Security: added governance for password-attempt throttling and documented deferral
+- Added sections: none
 - Removed sections: none
 - Follow-up TODOs: none
 -->
@@ -81,6 +71,10 @@ Sync Impact Report
 + Security is the primary design and release criterion. 
 + Every feature MUST document its assets, trust boundaries, threat cases, authentication and authorization rules, data classification, and failure behavior before implementation. 
 + Implementations MUST use secure defaults, least privilege, explicit input validation, protected secret storage, encryption for sensitive data in transit and at rest, and auditable security events. 
++ Internet-facing password authentication SHOULD use account-aware and source-aware attempt throttling,
+  progressive delays, temporary lockout, and auditable security events. A feature MAY defer these controls
+  when its specification records the decision, threat, rationale, and planned follow-up. Such a deferral
+  remains subject to the security release gate below.
 + Reviews MUST block release for unresolved critical or high-severity vulnerabilities, failed security tests, exposed secrets, or unmitigated threats. 
 + Enterprise readiness MUST be demonstrated through traceable controls, repeatable evidence, and documented operational ownership rather than asserted without verification.
 
@@ -117,4 +111,4 @@ Constitution versions follow semantic versioning:
 Every feature plan MUST include a constitution compliance check, and every release review MUST retain evidence that the applicable quality and security gates passed. 
 Compliance MUST be reviewed whenever the specification, architecture, dependency set, platform target, or threat model changes.
 
-**Version**: 1.0.0 | **Ratified**: 2026-09-15 | **Last Amended**: 2026-09-15
+**Version**: 1.1.0 | **Ratified**: 2026-09-15 | **Last Amended**: 2026-09-15
